@@ -11,7 +11,9 @@ public static class GameMapping
             Name = game.Name,
             GenreId = game.GenreId,
             Price = game.Price,
-            ReleaseDate = game.ReleaseDate
+            ReleaseDate = game.ReleaseDate,
+            Description = game.Description,
+            Filename = game.FileName
         }; 
     }
     //Convert GameEntity to GameSummaryDTO
@@ -21,7 +23,9 @@ public static class GameMapping
             game.Name,
             game.Genre!.Name,
             game.Price,
-            game.ReleaseDate
+            game.ReleaseDate,
+            game.Description!,
+            game.Filename!
         );
     }
     //Convert GameEntity to GameDetailsDTO
@@ -31,7 +35,9 @@ public static class GameMapping
             game.Name,
             game.GenreId,
             game.Price,
-            game.ReleaseDate
+            game.ReleaseDate,
+            game.Description!,
+            game.Filename!
         );
     }
 
@@ -41,7 +47,10 @@ public static class GameMapping
             Name = game.Name,
             GenreId = game.GenreId,
             Price = game.Price,
-            ReleaseDate = game.ReleaseDate
+            ReleaseDate = game.ReleaseDate,
+            Description = game.Description,
+            Filename = game.FileName
+
         }; 
     }
 }

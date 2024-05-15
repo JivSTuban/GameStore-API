@@ -11,4 +11,6 @@ public class Game
     public Genre? Genre { get; set; }
     public decimal Price { get; set; }
     public DateOnly ReleaseDate { get; set; }
+    public string? Description { get; set; }
+    public string? Filename { get; set; }
 }

@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace GameStore.API.Data.Migrations
+namespace GameStore.API.Migrations
 {
     [DbContext(typeof(GameStoreContext))]
-    [Migration("20240423051140_InitMig")]
-    partial class InitMig
+    [Migration("20240510101032_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,10 @@ namespace GameStore.API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("Date")
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Filename")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("GenreId")
@@ -37,6 +40,9 @@ namespace GameStore.API.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("ReleaseDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -59,6 +65,63 @@ namespace GameStore.API.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genres");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Fighting"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Action"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Adventure"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "RPG"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Strategy"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Simulation"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Sports"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Puzzle"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Platformer"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Action-Adventure"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Kids and Family"
+                        });
                 });
 
             modelBuilder.Entity("GameStore.API.Entities.Game", b =>

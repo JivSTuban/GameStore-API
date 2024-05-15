@@ -20,7 +20,9 @@ const string GetGameEndpointName = "GetGame";
             
             return game is null ? Results.NotFound(): Results.Ok(game.ToGameDetailsDTO());
             })
-            .WithName(GetGameEndpointName);
+            .WithName(GetGameEndpointName)
+            .RequireAuthorization();
+            
 
         // POST/create new game
         group.MapPost("/", async (CreateGameDTO newGame, GameStoreContext dbContext)=> {
@@ -33,7 +35,8 @@ const string GetGameEndpointName = "GetGame";
                 to render Genre Name by the use of the GenreID in the Game Entity.
                 The GetGameEndpointName concatenates the id the current group search.  */
             return Results.CreatedAtRoute(GetGameEndpointName, new {id = game.Id}, game.ToGameDetailsDTO());
-        });
+        })
+        .RequireAuthorization();
 
 
         group.MapPut("/{id}", async (int id, UpdateGameDTO updatedGameDTO, GameStoreContext dbContext) => {
@@ -50,13 +53,15 @@ const string GetGameEndpointName = "GetGame";
             await dbContext.SaveChangesAsync();
 
             return Results.NoContent();
-        });
+        })
+        .RequireAuthorization();
 
         group.MapDelete("/{id}", async (int id, GameStoreContext dbContext)=>{
             await dbContext.Games.Where(game => game.Id == id).ExecuteDeleteAsync();
 
             return Results.NoContent();
-        });
+        })
+        .RequireAuthorization();
         return group;
     }
 }

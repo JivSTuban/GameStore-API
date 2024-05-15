@@ -9,5 +9,9 @@ public record class CreateGameDTO(
     int GenreId, 
     [Range(1,100)]
     decimal Price, 
-    DateOnly ReleaseDate
+    DateOnly ReleaseDate,
+    [Required, StringLength(500)]
+    string Description,
+    [Required]
+    string FileName
 );

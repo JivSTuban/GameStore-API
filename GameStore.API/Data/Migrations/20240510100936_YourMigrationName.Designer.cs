@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace GameStore.API.Data.Migrations
+namespace GameStore.API.Migrations
 {
     [DbContext(typeof(GameStoreContext))]
-    [Migration("20240423054937_SeedGenres")]
-    partial class SeedGenres
+    [Migration("20240510100936_YourMigrationName")]
+    partial class YourMigrationName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,10 @@ namespace GameStore.API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("Date")
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Filename")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("GenreId")
@@ -37,6 +40,9 @@ namespace GameStore.API.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("ReleaseDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
